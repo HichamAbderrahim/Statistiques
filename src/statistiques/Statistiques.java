@@ -8,7 +8,6 @@ public class Statistiques {
     private static final Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-//        float[] list = {0,1,2,3,2,3,3,4,4,3,4,3,4,4,4,4,6,5,5,6,5,5,5,5,5,5};
         int n = 0;
         do {
             out.print("Entrer la taile de la liste: ");
@@ -49,6 +48,7 @@ public class Statistiques {
         }
     }
 
+    /* Complexité O(n) */
     public static float calcMoyenne(float[] list) {
         float m = 0;
         for (int i = 0; i < list.length; i++) {
@@ -57,6 +57,7 @@ public class Statistiques {
         return m / list.length;
     }
 
+    /* Complexité O(n) */
     public static float calcVariance(float[] list) {
         float v = 0;
         for (int i = 0; i < list.length; i++) {
@@ -67,10 +68,12 @@ public class Statistiques {
         return v - m * m;
     }
 
+    /* Complexité O(n) */
     public static float calcEcartType(float[] list) {
         return (float) Math.sqrt(calcVariance(list));
     }
 
+    /* Complexité O(n log n) */
     public static float calcMediane(float[] list) {
         triFusion(list, 0, list.length - 1);
         if (list.length % 2 == 0) {
@@ -81,6 +84,7 @@ public class Statistiques {
         }
     }
 
+    /* Complexité O(n log n) */
     public static float calcMode(float[] list) {
         triFusion(list, 0, list.length - 1);
         int n = 1;
@@ -116,6 +120,7 @@ public class Statistiques {
         return list2[max];
     }
 
+    /* Cette fonction est utilisée dans la fonction triFusion */
     public static void fusion(float[] list, int l, int m, int r) {
         float[] L = new float[m - l + 1];
         float[] R = new float[r - m];
@@ -148,6 +153,7 @@ public class Statistiques {
         }
     }
 
+    /* Complexité O(n log n) */
     public static void triFusion(float[] list, int l, int r) {
         if (l < r) {
             int m = l + (r - l) / 2;
@@ -157,6 +163,7 @@ public class Statistiques {
         }
     }
 
+    /* Complexité O(log n), Ici, le tableau doit être organisé par order croissant */
     public static int rechercheDichotomique(float[] list, int l, int r, float x) {
         if (r >= l) {
             int m = l + (r - l) / 2;
